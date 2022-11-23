@@ -1,6 +1,8 @@
-*.vs/*
 
-**/[Dd]ebug/*
+
+# Build results
+*.vs/*
+[Dd]ebug/
 
 # Prerequisites
 *.d
