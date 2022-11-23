@@ -1,5 +1,6 @@
 template <class T> class DList;
 template <class T> class DListIterator;
+
 #pragma once
 #include "DListNode.h"
 #include "DListIterator.h"
