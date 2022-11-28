@@ -1,4 +1,3 @@
-
 #include "CppUnitTest.h"
 #include "../Doubly Linked List/DList.h"
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
@@ -6,7 +5,7 @@ namespace Microsoft {
 	namespace VisualStudio {
 		namespace CppUnitTestFramework
 		{
-			template<> static std::wstring ToString<DListNode<int>>(const DListNode<int> &b)
+			template<> static std::wstring ToString<DListNode<int>>(const DListNode<int>& b)
 			{
 				return L"DListNode";
 			};
@@ -34,7 +33,7 @@ namespace DoublyLinkedListTests
 			Assert::AreSame(*list.head, *list.tail);
 		}
 		/*
-			Test the append method with a single entry 
+			Test the append method with a single entry
 			in the list.
 			Checks the head and tail are set correctly.
 			and the value is added to the list
@@ -56,7 +55,7 @@ namespace DoublyLinkedListTests
 		Test the append method with a multiple entries
 		in the list.
 		Checks the head and tail are set correctly.
-		and the value is added to the list 
+		and the value is added to the list
 		and accessible fron the head
 
 		*/
@@ -139,7 +138,6 @@ namespace DoublyLinkedListTests
 			list.removeHead();
 			Assert::IsNull(list.head);
 			Assert::IsNull(list.tail);
-
 		}
 		/*
 		Tests the remove head method with a multiple items in the list
@@ -156,7 +154,6 @@ namespace DoublyLinkedListTests
 			Assert::AreEqual(4, list.head->data);
 			Assert::AreEqual(4, list.tail->data);
 			Assert::AreSame(*list.head, *list.tail);
-
 		}
 		/*
 		Tests the remove head method with a 3 items in the list
@@ -180,14 +177,13 @@ namespace DoublyLinkedListTests
 		Tests the remove tail method with a single item in the list
 		head and tail should be set to nullptr
 		*/
-		TEST_METHOD(TestRemoveTail1Item)
+		TEST_METHOD(TestRemoveTailOneItem)
 		{
 			DList<int> list;
 			list.prepend(4);
 			list.removeTail();
 			Assert::IsNull(list.head);
 			Assert::IsNull(list.tail);
-
 		}
 		/*
 		Tests the remove head method with a multiple items in the list
@@ -204,17 +200,16 @@ namespace DoublyLinkedListTests
 			Assert::AreEqual(3, list.head->data);
 			Assert::AreEqual(3, list.tail->data);
 			Assert::AreSame(*list.head, *list.tail);
-
 		}
 		/*
 		Tests the remove tail method with a 3 items in the list
 		head and tail should be set to the different nodes
 		head (2) tail (3)
 		*/
-		TEST_METHOD(TestRemoveTail3Items)
+		TEST_METHOD(TestRemoveTailThreeItems)
 		{
 			DList<int> list;
-			
+
 			list.append(2);
 			list.append(3);
 			list.append(4);
@@ -238,12 +233,10 @@ namespace DoublyLinkedListTests
 			DListIterator<int> iter = list.getIterator();
 			list.insert(iter, 1);
 			Assert::IsNull(list.head);
-
-
 		}
 		/*
 			Test the insert method (which uses insertBefore on the node) on a list with one item
-			head and tail should be different items 
+			head and tail should be different items
 			head will be 2 and tail will be 1
 		*/
 		TEST_METHOD(TestInsertAtEnd)
@@ -256,8 +249,6 @@ namespace DoublyLinkedListTests
 			Assert::AreEqual(2, list.head->data);
 			Assert::AreNotSame(*list.head, *list.tail);
 			Assert::AreEqual(1, list.tail->data);
-
-
 		}
 		/*
 		Test the insert method (which uses insertBefore) on a list with multiple items
@@ -275,8 +266,6 @@ namespace DoublyLinkedListTests
 			Assert::AreEqual(1, list.head->data);
 			Assert::AreEqual(2, list.head->next->data);
 			Assert::AreEqual(3, list.tail->data);
-
-
 		}
 		/*
 			Test the remove method to remove an item from a list with one entry.
@@ -290,8 +279,6 @@ namespace DoublyLinkedListTests
 			list.remove(iter);
 			Assert::IsNull(list.head);
 			Assert::IsNull(list.tail);
-
-
 		}
 		/*
 		Test the remove method to remove an item from a list with two entries.
@@ -307,7 +294,6 @@ namespace DoublyLinkedListTests
 			list.remove(iter);
 			Assert::AreEqual(1, list.head->data);
 			Assert::AreSame(*list.head, *list.tail);
-
 		}
 		/*
 		Test the remove method to remove an item from a list with multiple entries.
@@ -328,7 +314,6 @@ namespace DoublyLinkedListTests
 			Assert::AreEqual(3, list.tail->data);
 			Assert::AreSame(*list.tail, *list.head->next);
 			Assert::AreSame(*list.head, *list.tail->previous);
-
 		}
 		/*
 		Test the remove method to remove the first item from a list with multiple entries.

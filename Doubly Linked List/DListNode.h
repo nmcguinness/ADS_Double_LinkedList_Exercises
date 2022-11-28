@@ -36,6 +36,15 @@ DListNode<T>::DListNode(T item)
 template <class T>
 void DListNode<T>::insertAfter(T item)
 {
+	DListNode<T>* temp = new DListNode<T>(item);
+	temp->previous = this;
+	temp->next = this->next;
+	this->next = temp;
+
+	if (temp->next != nullptr)
+	{
+		temp->next->previous = temp;
+	}
 }
 
 template <class T>
@@ -47,7 +56,9 @@ void DListNode<T>::insertBefore(T item) //inserting "Oslo" between "Paris" and "
 	DListNode<T>* pRight = this;				 //Munich
 
 	//lets create the "next" (going right) connections
-	pLeft->next = pNew; //Paris -> Oslo
+	if (pLeft != nullptr)
+		pLeft->next = pNew; //Paris -> Oslo
+
 	pNew->next = pRight; //Oslo -> Munich
 
 	//lets create the "previous" (going left) connections

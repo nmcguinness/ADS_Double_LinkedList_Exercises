@@ -18,7 +18,7 @@
     <ClCompile Include="DListNodeTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DListTest.cpp">
+    <ClCompile Include="DListTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

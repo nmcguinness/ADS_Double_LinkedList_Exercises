@@ -5,7 +5,7 @@ namespace Microsoft {
 	namespace VisualStudio {
 		namespace CppUnitTestFramework
 		{
-			template<> static std::wstring ToString<DListNode<int>>(const DListNode<int> &b)
+			template<> static std::wstring ToString<DListNode<int>>(const DListNode<int>& b)
 			{
 				return L"DListNode";
 			};
@@ -13,15 +13,14 @@ namespace Microsoft {
 	}
 }
 namespace DoublyLinkedListTests
-{		
-	TEST_CLASS(DListNodeTest)
+{
+	TEST_CLASS(DListNodeTests)
 	{
 	public:
 		/*
 			Test to ensure value is setted and next and previous are set to
 			null when constructor is called
 		*/
-			
 
 		TEST_METHOD(TestConstructor)
 		{
@@ -32,7 +31,7 @@ namespace DoublyLinkedListTests
 		}
 
 		/*
-			Test of insert after with a single node 
+			Test of insert after with a single node
 			Tests teh correct value is set and the correct links are established
 			using next and previous
 
@@ -51,23 +50,22 @@ namespace DoublyLinkedListTests
 			initial list: {5, 7}
 			final list : {5,6,7}
 
-			test checks teh values are in the correct place and next/previous 
+			test checks teh values are in the correct place and next/previous
 			are pointing correctly in the new node
 		*/
 		TEST_METHOD(TestInsertAfterBetweenTwoNodes)
 		{
 			DListNode<int> node(5); // add 5
 			node.insertAfter(7);// add 7 next
-			DListNode<int> *finalNode = node.next;
+			DListNode<int>* finalNode = node.next;
 			node.insertAfter(6);// place 6 between 5 and 7
-			DListNode<int> *next = node.next;
+			DListNode<int>* next = node.next;
 			Assert::IsNotNull(next);
 			Assert::AreEqual(6, next->data);
 			Assert::AreSame(node, *next->previous);
 			Assert::AreSame(*finalNode, *next->next);
 			Assert::AreSame(*finalNode->previous, *next);
 			Assert::AreSame(*(node.next), *next);
-
 		}
 
 		/*
@@ -97,16 +95,15 @@ namespace DoublyLinkedListTests
 		{
 			DListNode<int> node(5); // add 5
 			node.insertAfter(7);// add 7 next
-			DListNode<int> *finalNode = node.next;
+			DListNode<int>* finalNode = node.next;
 			finalNode->insertBefore(6);// place 6 between 5 and 7
-			DListNode<int> *next = node.next;
+			DListNode<int>* next = node.next;
 			Assert::IsNotNull(next);
 			Assert::AreEqual(6, next->data);
 			Assert::AreSame(node, *next->previous);
 			Assert::AreSame(*finalNode, *next->next);
 			Assert::AreSame(*finalNode->previous, *next);
 			Assert::AreSame(*(node.next), *next);
-
 		}
 	};
 }
